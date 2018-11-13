@@ -1,0 +1,20 @@
+<div class="row columns" style="color: #fff; width: 80%;margin: 0px auto">
+  <div *ngIf="name" >
+    <h1>Hello {{ name }}!</h1>
+    <button (click)="logout()">Logout</button>
+  </div>
+  <div *ngIf="!name">
+    <p style="color: #fff; margin-right: 1em">Please login.</p>
+    <button (click)="login()">Login with Google</button>
+  </div>
+  <!-- <button (click)="login()" *ngIf="!name">Login With Google</button> -->
+
+  <div class="chat-container" *ngFor="let item of items | async">
+    <a href="#">{{item.name}}</a>
+    
+    <p>{{item.message}}</p>
+  </div>
+
+  <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="chatMessage"
+  />
+</div>
